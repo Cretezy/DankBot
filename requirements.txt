@@ -1,0 +1,7 @@
+pymessenger
+flask
+gunicorn
+praw
+flask_sqlalchemy
+psycopg2
+imgurpython

@@ -1,0 +1,14 @@
+language: python
+cache: pip
+python:
+- '3.5'
+script: true
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: LaTIWsI1rX+lSLT+LHeDRjmeYb3VPvEbWjnZKjDjZuXGM9tqsO5izb4TOnrcINBpvkfeX2mPL9T1FqZUe6H7Q+tHVvyGCAQLB9uYI+jTM1Fgg9ABhdSruijwmp2onukn3ELc5liHjt1BMKUcieUB9OWpmuuMSIluqsKUea7Z8Ew+BZKVbGgf1FtBoAE9P1GWfrZ5EX0JbLdxIJVZrc5aAaykAqG/vcxDeGlRoz48d6P5IrTG4uNlLSKKs5QPyFq85MokZCVapeSgPuNsdBdY/0pXaz2l229WczKTXxtorFgc9vcLDiuVrX3wdnUh5nTqkz/I4BMJl7Sy1tRT8KhLyakaCEZcOabKAhGcg8ri6fmX2MCmyTrUhq9zYlCD6htEtZOX6Ge2kyYI5rbCOHrAXYi3DKWr3hy4kYpVXeRXYN5jhMngFSnkdSSQ/+zjbo+NTdbmIPLZduOvSIPGL/V/YP16DueRnsY9Du8ZFGiDUyuk3R9q1Rw3kevgG1Zi1NHjnne19txtHTJmcakUsKcFLlAwkhy7CeBWI5gqaiaObCkpRCp4LuxkJUkGMF0t3HHL4iTKrTEHJ4CvblluxyH7NP19MpvaaEpbUyXoVtPkiEA6WcKubwquY6JXSRzUOiqJv+P2LUaF5i0k5gkKkt48GS4QyCHfBdfp3YBgD9wS+mA=
+  app: dank-bot-420
+  on:
+    repo: Cretezy/DankBot
