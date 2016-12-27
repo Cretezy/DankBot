@@ -7,9 +7,11 @@ class Subscriber(db.Model):
     __tablename__ = 'subscriber'
     id = db.Column(db.Integer, primary_key=True)
     recipient_id = db.Column(db.String(), unique=True)
+
     morning = db.Column(db.Boolean(), default=False)
     noon = db.Column(db.Boolean(), default=True)
     afternoon = db.Column(db.Boolean(), default=False)
+    night = db.Column(db.Boolean(), default=False)
 
     def __init__(self, recipient_id):
         self.recipient_id = recipient_id
@@ -69,33 +71,3 @@ class History(db.Model):
     def __repr__(self):
         return '<History %r %r>' % self.recipient_id, self.command
 
-
-class Meme(db.Model):
-    __tablename__ = 'meme'
-    id = db.Column(db.Integer, primary_key=True)
-    key = db.Column(db.String(), unique=True)
-    name = db.Column(db.String())
-    order = db.Column(db.Integer())
-
-    def __init__(self, key, name, order):
-        self.key = key
-        self.name = name
-        self.order = order
-
-    def __repr__(self):
-        return '<Meme %r>' % self.key
-
-
-class MemeResult(db.Model):
-    __tablename__ = 'meme_result'
-    id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.String())
-    meme_id = db.Column(db.Integer, db.ForeignKey('meme.id'))
-    meme = db.relationship("Meme", backref="meme_result")
-
-    def __init__(self, meme, data):
-        self.meme = meme
-        self.data = data
-
-    def __repr__(self):
-        return '<MemeResult %r>' % self.data

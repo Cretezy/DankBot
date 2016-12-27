@@ -1,8 +1,9 @@
 import json
 import re
+
 from dankbot import bot, db
 from dankbot import utils
-from dankbot.models import Meme, Subreddit, Subscriber
+from dankbot.models import Subreddit, Subscriber
 
 
 def send_meme(recipient_id, meme, fix=True):
@@ -21,25 +22,6 @@ def send_meme(recipient_id, meme, fix=True):
         bot.send_video_url(recipient_id, meme)
     else:
         bot.send_text_message(recipient_id, meme)
-
-
-def send_quick_memes(recipient_id):
-    quick_meme = []
-    memes = db.session.query(Meme).order_by(Meme.order).all()
-
-    for meme in memes:
-        quick_meme.append({
-            "content_type": "text",
-            "payload": "MEME_" + meme.key,
-            "title": meme.name
-        })
-
-    payload = {
-        "text": "Pick a quick dank meme",
-        "quick_replies": quick_meme
-    }
-
-    bot.send_message(recipient_id, payload)
 
 
 def send_quick_subreddit(recipient_id):
@@ -68,7 +50,7 @@ def send_subscribe_menu(recipient_id, text=None):
     if not subscriber:
         subscriber = Subscriber(recipient_id)
 
-    for time in ["Morning", "Noon", "Afternoon"]:
+    for time in ["Morning", "Noon", "Afternoon", "Night"]:
         value = getattr(subscriber, time.lower())
         subbed = False if value is None or value is False else True
         print(subbed, time)
@@ -76,7 +58,8 @@ def send_subscribe_menu(recipient_id, text=None):
             "content_type": "text",
             "title": "{}".format(time),
             "payload": ("UN" if subbed else "") + "SUBSCRIBE_" + time.upper(),
-            "image_url": "http://litbimg.rightinthebox.com/images/wholesale/201407/green.jpg" if subbed else "https://upload.wikimedia.org/wikipedia/commons/1/1f/Red_vovinam_16x16.png"
+            "image_url": "http://litbimg.rightinthebox.com/images/wholesale/201407/green.jpg" if subbed else
+            "https://upload.wikimedia.org/wikipedia/commons/1/1f/Red_vovinam_16x16.png"
         })
 
     times.append({
@@ -87,7 +70,8 @@ def send_subscribe_menu(recipient_id, text=None):
 
     payload = {
         "quick_replies": times,
-        "text": "Toggle times to receive dank memes (Morning: jokes, Noon: me_irl, Afternoon: LifeProTips)" if text is None else text
+        "text": "Toggle times to receive dank memes " +
+                "(Morning: jokes, Noon: me_irl, Afternoon: LifeProTips, Night: nosleep)" if text is None else text
     }
 
     print(json.dumps(payload))

@@ -14,7 +14,8 @@ def broadcast(time_name):
     times = {
         "morning": {"subreddit": "jokes", "text": True},
         "noon": {"subreddit": "me_irl", "text": False},
-        "afternoon": {"subreddit": lpt, "text": True}
+        "afternoon": {"subreddit": lpt, "text": True},
+        "night": {"subreddit": "nosleep", "text": True}
     }
 
     time = times[time_name]

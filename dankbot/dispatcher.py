@@ -10,8 +10,6 @@ from dankbot.models import History, MemeResult, Post, Meme, Subscriber
 actions = {
     "START": "start",
     "REPEAT": "repeat",
-    "QUICK_MEME": "quick_meme",
-    "MEME_(.*)": "meme",
     "QUICK_SUB": "quick_subreddit",
     "SUB_(.*)": "subreddit",
     "SUBSCRIBBLES": "subscribe_menu",
@@ -40,8 +38,6 @@ def help_menu(action):
     buttons = []
     button = Button(title='Subscribble', type='postback', payload='SUBSCRIBBLES')
     buttons.append(button)
-    button = Button(title='Quick Meme', type='postback', payload='QUICK_MEME')
-    buttons.append(button)
     button = Button(title='Quick Sub', type='postback', payload='QUICK_SUB')
     buttons.append(button)
     sender.bot.send_button_message(action.recipient_id, "Here is the help menu papi! 🍄", buttons)
@@ -62,18 +58,6 @@ def repeat(action):
     history = History.query.filter_by(recipient_id=action.recipient_id).order_by(History.ran_at.desc()).first()
     if history:
         dispatch(Action(history.recipient_id, history.command))
-
-
-def meme(action):
-    meme_match = re.match("MEME_(.*)", action.payload)
-    meme_key = db.session.query(Meme).filter_by(key=meme_match.group(1)).first()
-    memes = db.session.query(MemeResult).filter_by(meme_id=meme_key.id).all()
-    if memes:
-        sender.send_meme(action.recipient_id, random.choice(memes).data)
-
-
-def quick_meme(action):
-    sender.send_quick_memes(action.recipient_id)
 
 
 def quick_subreddit(action):
@@ -99,11 +83,11 @@ def subscribe(action):
 
     subscriber = get_subscriber(action.recipient_id)
 
-    if time.lower() in ["morning", "noon", "afternoon"]:
+    if time.lower() in ["morning", "noon", "afternoon", "night"]:
         setattr(subscriber, time.lower(), True)
         db.session.commit()
 
-    sender.send_subscribe_menu(action.recipient_id, text="Subbed for {}!".format(time.lower()))
+    sender.send_subscribe_menu(action.recipient_id, text="Subbed for {}! :)".format(time.lower()))
 
 
 def unsubscribe(action):
@@ -112,11 +96,11 @@ def unsubscribe(action):
 
     subscriber = get_subscriber(action.recipient_id)
 
-    if time.lower() in ["morning", "noon", "afternoon"]:
+    if time.lower() in ["morning", "noon", "afternoon", "night"]:
         setattr(subscriber, time.lower(), False)
         db.session.commit()
 
-    sender.send_subscribe_menu(action.recipient_id, text="Unsubbed for {}!".format(time.lower()))
+    sender.send_subscribe_menu(action.recipient_id, text="Unsubbed for {}! :(".format(time.lower()))
 
 
 def get_subscriber(recipient_id):
