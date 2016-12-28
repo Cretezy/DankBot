@@ -2,11 +2,11 @@ import os
 
 import praw
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from imgurpython import ImgurClient
 from pymessenger import Bot
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='public')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 db = SQLAlchemy(app)
 bot = Bot(os.environ.get("MESSENGER_TOKEN"))

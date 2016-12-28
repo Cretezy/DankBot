@@ -2,7 +2,7 @@ import json
 import os
 
 from dankbot import handler, app
-from flask import request
+from flask import request, send_from_directory
 
 
 @app.route("/webhook", methods=['GET', 'POST'])
@@ -21,6 +21,17 @@ def webhook():
                     handler.handle(event)
 
     return ""
+
+
+# Routes
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+
+@app.route('/privacy')
+def privacy():
+    return app.send_static_file('privacy.html')
 
 
 if __name__ == "__main__":

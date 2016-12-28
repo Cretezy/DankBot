@@ -40,7 +40,7 @@ def help_menu(action):
     buttons.append(button)
     button = Button(title='Quick Sub', type='postback', payload='QUICK_SUB')
     buttons.append(button)
-    sender.bot.send_button_message(action.recipient_id, "Here is the help menu papi! 🍄", buttons)
+    sender.bot.send_button_message(action.recipient_id, "Here is the help menu! 🍄", buttons)
 
 
 def start(action):
@@ -51,6 +51,9 @@ def start(action):
         "Suck a dick a day 🍆"
     ]
     sender.bot.send_text_message(action.recipient_id, "Welcome to Dank Bot! " + random.choice(start_messages))
+    sender.bot.send_text_message(action.recipient_id,
+                                 "We send you stuff (memes, jokes, etc) everyday. " +
+                                 "Our content is based off Reddit's top posts. <3")
     subscribe_menu(action)
 
 

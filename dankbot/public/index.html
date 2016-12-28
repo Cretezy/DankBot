@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dank Bot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Oxygen', sans-serif;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>DankBot</h1>
+    <br/>
+    <div class="fb-messengermessageus"
+         messenger_app_id="1763853390519273"
+         page_id="1738169659777266"
+         color="blue"
+         size="xlarge">
+    </div>
+</div>
+
+<script>
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: "1763853390519273",
+            xfbml: true,
+            version: "v2.6"
+        });
+
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+</script>
+</body>
+</html>

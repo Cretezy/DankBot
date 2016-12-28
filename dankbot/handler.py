@@ -27,7 +27,7 @@ def receive_message(event):
     if text == "help":
         dispatcher.dispatch(dispatcher.Action(recipient_id, "HELP"))
     else:
-        bot.send_text_message(recipient_id, "Please use the quick menu papi (or say \"help\")! 🍄")
+        bot.send_text_message(recipient_id, "Please use the quick menu (or say \"help\")! 🍄")
 
 
 def receive_sticker(event):
