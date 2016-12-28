@@ -19,7 +19,7 @@ def broadcast(time_name):
     }
 
     time = times[time_name]
-    post = next(reddit.subreddit(time['subreddit']).top(time='24h', limit=5))
+    post = next(reddit.subreddit(time['subreddit']).top(time_filter='day', limit=3))
 
     url = post.url
     if not time['text']:
@@ -44,7 +44,7 @@ def update_memes():
     reddit_regex = "(https?://i\.reddituploads\.com/(.*))"
     db.session.query(Post).delete()
     for subreddit in db.session.query(Subreddit):
-        request = reddit.subreddit(subreddit.name).top(time=subreddit.fetch_time, limit=150)
+        request = reddit.subreddit(subreddit.name).top(time_filter=subreddit.fetch_time, limit=150)
         for reddit_post in request:
             data = reddit_post.selftext
             media = False
