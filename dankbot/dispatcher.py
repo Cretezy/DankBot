@@ -5,7 +5,7 @@ from pymessenger import Button
 
 from dankbot import db
 from dankbot import sender
-from dankbot.models import History, MemeResult, Post, Meme, Subscriber
+from dankbot.models import History, Post, Subscriber
 
 actions = {
     "START": "start",
