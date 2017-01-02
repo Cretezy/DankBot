@@ -62,3 +62,12 @@ def update_memes():
             post = Post(reddit_post.title, data, reddit_post.score, media, subreddit)
             db.session.add(post)
             db.session.commit()
+
+
+def announce(announcement_type, text):
+    for subscriber in db.session.query(Subscriber).filter(
+                                    Subscriber.morning | Subscriber.noon | Subscriber.afternoon | Subscriber.night):
+        if announcement_type == "text":
+            bot.send_text_message(subscriber.recipient_id, text)
+        elif announcement_type == "media":
+            sender.send_meme(subscriber.recipient_id, text, False)
