@@ -3,5 +3,5 @@ flask
 gunicorn
 praw
 flask_sqlalchemy
-psycopg2
+psycopg2cffi
 imgurpython
