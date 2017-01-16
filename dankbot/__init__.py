@@ -4,15 +4,10 @@ import praw
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from imgurpython import ImgurClient
+from psycopg2cffi import compat
 from pymessenger import Bot
 
-try:
-    import psycopg2
-except ImportError:
-    # Fall back to psycopg2cffi
-    from psycopg2cffi import compat
-    compat.register()
-
+compat.register()
 
 app = Flask(__name__, static_folder='public')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")

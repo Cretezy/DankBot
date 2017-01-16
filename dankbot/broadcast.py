@@ -10,11 +10,10 @@ from dankbot.models import Subscriber, Subreddit, Post
 
 
 def broadcast(time_name):
-    lpt = "LifeProTips" if random.random() > 0.1 else "ShittyLifeProTips"
     times = {
         "morning": {"subreddit": "jokes", "text": True},
         "noon": {"subreddit": "me_irl", "text": False},
-        "afternoon": {"subreddit": lpt, "text": True},
+        "afternoon": {"subreddit": "wholesomememes", "text": False},
         "night": {"subreddit": "nosleep", "text": True}
     }
 
