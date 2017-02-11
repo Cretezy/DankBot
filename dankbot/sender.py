@@ -50,7 +50,7 @@ def send_subscribe_menu(recipient_id, text=None):
     if not subscriber:
         subscriber = Subscriber(recipient_id)
 
-    for time in ["Morning", "Noon", "Afternoon"]:
+    for time in ["Morning", "Noon", "Afternoon", "Night"]:
         value = getattr(subscriber, time.lower())
         subbed = False if value is None or value is False else True
         print(subbed, time)
@@ -71,7 +71,7 @@ def send_subscribe_menu(recipient_id, text=None):
     payload = {
         "quick_replies": times,
         "text": "Toggle times to receive dank memes " +
-                "(Morning: jokes, Noon: me_irl, Afternoon: WholesomeMemes)" if text is None else text
+                "(Morning: jokes, Noon: me_irl, Afternoon: DankMemes, Night: WholesomeMemes)" if text is None else text
     }
 
     print(json.dumps(payload))

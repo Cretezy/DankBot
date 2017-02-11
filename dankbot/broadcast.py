@@ -11,10 +11,10 @@ from dankbot.models import Subscriber, Subreddit, Post
 
 def broadcast(time_name):
     times = {
-        "morning": {"subreddit": "jokes", "text": True},
-        "noon": {"subreddit": "me_irl", "text": False},
-        "afternoon": {"subreddit": "wholesomememes", "text": False},
-        "night": {"subreddit": "nosleep", "text": True}
+        "morning": {"subreddit": "jokes", "text": True, "title": True},
+        "noon": {"subreddit": "me_irl", "text": False, "title": False},
+        "afternoon": {"subreddit": "dankmemes", "text": False, "title": True},
+        "night": {"subreddit": "wholesomememes", "text": False, "title": True}
     }
 
     time = times[time_name]
@@ -33,6 +33,8 @@ def broadcast(time_name):
                 bot.send_text_message(subscriber.recipient_id, post.selftext)
             bot.send_text_message(subscriber.recipient_id, "Score: {} | http://redd.it/{}".format(post.score, post.id))
         else:
+            if time['title']:
+                bot.send_text_message(subscriber.recipient_id, post.selftext)
             sender.send_meme(subscriber.recipient_id, url, False)
 
     update_memes()

@@ -18,4 +18,3 @@ reddit = praw.Reddit(user_agent='dank-420',
                      client_secret=os.environ.get("REDDIT_SECRET"))
 imgur = ImgurClient(os.environ.get("IMGUR_ID"), os.environ.get("IMGUR_SECRET"))
 
-from dankbot import models
