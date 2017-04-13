@@ -1,4 +1,3 @@
-import random
 import re
 
 from imgurpython.helpers.error import ImgurClientError
@@ -66,6 +65,7 @@ def update_memes():
 
 
 def announce(announcement_type, text):
+    print("Sending:", text)
     for subscriber in db.session.query(Subscriber).filter(
                                     Subscriber.morning | Subscriber.noon | Subscriber.afternoon | Subscriber.night):
         if announcement_type == "text":
