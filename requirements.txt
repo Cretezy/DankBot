@@ -1,7 +1,11 @@
-pymessenger
+pymessenger2
 flask
 gunicorn
 praw
-flask_sqlalchemy
-psycopg2cffi
+Flask-SQLAlchemy
+Flask-Migrate
+psycopg2
+#pysqlite
 imgurpython
+python-dotenv
+gunicorn

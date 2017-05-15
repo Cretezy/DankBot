@@ -71,3 +71,5 @@ class History(db.Model):
     def __repr__(self):
         return '<History %r %r>' % self.recipient_id, self.command
 
+db.create_all()
+db.session.commit()

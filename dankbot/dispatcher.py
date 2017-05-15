@@ -1,7 +1,7 @@
 import random
 import re
 
-from pymessenger import Button
+from pymessenger2 import Button
 
 from dankbot import db
 from dankbot import sender

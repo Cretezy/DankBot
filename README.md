@@ -10,7 +10,6 @@ It also has a collection of memes built in (database).
 Build using:
 
 * [Python](https://www.python.org)
-* [Heroku](https://heroku.com)
 * [Reddit](https://reddit.com) and [Imgur](https://imgur.com)
-* [pymessenger](https://github.com/davidchua/pymessenger)
+* [pymessenger2](https://github.com/Cretezy/pymessenger2)
 * [Flask](https://github.com/pallets/flask) & [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org/2.1/) with [PostgreSQL](https://www.postgresql.org/)

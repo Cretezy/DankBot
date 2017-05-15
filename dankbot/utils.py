@@ -40,6 +40,6 @@ def fix_imgur_url(url):
 
     gfy = re.search("https?://(.+\.)?gfycat.com/(.*)", url)
     if gfy:
-        return "https://zippy.gfycat.com/" + gfy.group(2) + ".mp4"
+        return "https://fat.gfycat.com/" + gfy.group(2) + ".mp4"
 
     return url
