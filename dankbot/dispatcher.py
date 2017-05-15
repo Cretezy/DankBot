@@ -1,7 +1,7 @@
 import random
 import re
 
-from pymessenger2 import Button
+from pymessenger2 import PostbackButton
 
 from dankbot import db
 from dankbot import sender
@@ -36,9 +36,9 @@ def dispatch(action):
 
 def help_menu(action):
     buttons = []
-    button = Button(title='Subscribble', type='postback', payload='SUBSCRIBBLES')
+    button = PostbackButton(title='Subscribble', type='postback', payload='SUBSCRIBBLES')
     buttons.append(button)
-    button = Button(title='Quick Sub', type='postback', payload='QUICK_SUB')
+    button = PostbackButton(title='Quick Sub', type='postback', payload='QUICK_SUB')
     buttons.append(button)
     sender.bot.send_button_message(action.recipient_id, "Here is the help menu! 🍄", buttons)
 
