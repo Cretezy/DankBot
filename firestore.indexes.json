@@ -1,0 +1,17 @@
+{
+  "indexes": [
+    {
+      "collectionId": "posts",
+      "fields": [
+        {
+          "fieldPath": "time",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "mode": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}

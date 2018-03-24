@@ -1,0 +1,23 @@
+{
+  "short_name": "Dank Bot",
+  "name": "Dank Bot",
+
+  "icons": [
+    {
+      "src": "assets/pepe-small.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/pepe-medium.png",
+      "sizes": "256x26",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "theme_color": "#4CAF50",
+  "background_color": "#EEEEEE",
+
+  "gcm_sender_id": "103953800507"
+}
