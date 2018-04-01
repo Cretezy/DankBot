@@ -1,0 +1,11 @@
+{
+  "reddit": {
+    "refreshtoken": "14400038-BZdLs4FHvYdTNaedch_VUlwnR8Q",
+    "clientsecret": "xHfEIouDFZpme0Br37zw1gOoETw",
+    "clientid": "vT5YqqeP7UIn8Q",
+    "useragent": "dankbot"
+  },
+  "dankbot": {
+    "cron": "bKy3VhuUmmMA7TTEM799jr2T"
+  }
+}

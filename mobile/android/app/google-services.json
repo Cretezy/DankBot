@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "593740228443",
+    "firebase_url": "https://dank-bot-42069.firebaseio.com",
+    "project_id": "dank-bot-42069",
+    "storage_bucket": "dank-bot-42069.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593740228443:android:9792f6d6fe7005c2",
+        "android_client_info": {
+          "package_name": "com.cretezy.dankbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593740228443-c2iag6gr685r970g3ilu4gj5eqdqnmuj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cretezy.dankbot",
+            "certificate_hash": "3b3c002339409192fa97ebabc4546dba966dacff"
+          }
+        },
+        {
+          "client_id": "593740228443-d66qbr2mo97l7qv6560959sshseuccu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvfVoHBcQsKNK4xIYsb2w6hUWJrB3GTyo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593740228443-d66qbr2mo97l7qv6560959sshseuccu8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,13 +9,13 @@ firebase.initializeApp({
 
 var messaging = firebase.messaging();
 
-messaging.setBackgroundMessageHandler(function(payload) {
+messaging.setBackgroundMessageHandler(function (payload) {
   var data = payload.data;
 
   return self.registration.showNotification(
-    "Get your " + data.time + " dank!",
+    data.title,
     {
-      body: "⬆️ " + data.ups + " (" + data.subreddit + ")",
+      body: data.body,
       icon: "https://dankbot.cretezy.com/assets/pepe-medium.png",
       badge: "https://dankbot.cretezy.com/assets/pepe-small.png",
       image: data.thumbnail,
@@ -30,14 +30,12 @@ messaging.setBackgroundMessageHandler(function(payload) {
           title: "Dank Bot"
         }
       ],
-      data: {
-        url: data.permalink
-      }
+      data: data
     }
   );
 });
 
-self.addEventListener("notificationclick", function(event) {
+self.addEventListener("notificationclick", function (event) {
   event.notification.close();
 
   var url = event.notification.data.url;
@@ -46,15 +44,15 @@ self.addEventListener("notificationclick", function(event) {
     url = "https://dankbot.cretezy.com/";
   }
 
-  event.waitUntil(clients.matchAll().then(function(windowClients) {
-    var client = windowClients.find(function(client){
+  event.waitUntil(clients.matchAll().then(function (windowClients) {
+    var client = windowClients.find(function (client) {
       return client.url === url;
     });
 
     // Focus if already opened in tab, else open new tab
-    if(client){
+    if (client) {
       return client.focus()
-    }else{
+    } else {
       return clients.openWindow(url)
     }
   }));

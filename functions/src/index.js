@@ -1,4 +1,4 @@
-import { config, firestore, https } from "firebase-functions";
+import {config, firestore, https} from "firebase-functions";
 import admin from "firebase-admin";
 import snoowrap from "snoowrap";
 
@@ -109,18 +109,28 @@ export const time = https.onRequest(async (req, res) => {
   const { thumbnail, ups, id } = top;
   const permalink = `https://redd.it/${id}`;
 
+  const title = `Get your ${time} dank!`;
+  const body = `⬆️ ${ups} (${subreddit})`;
   // Format notification
   const message = {
-    data: {
-      time,
-      subreddit,
-      ups: ups.toString(),
-      permalink,
-      thumbnail
-    },
-    topic: time
-  };
+      data: {
+        title,
+        body,
+        url: permalink,
+        thumbnail
+      },
+      android: {
+        notification: {
+          title,
+          body,
+          clickAction: "FLUTTER_NOTIFICATION_CLICK"
+        },
+      },
+      topic: time
+    }
+  ;
 
+  console.log(message);
   // Keep only latest 6 (+1 from today)
   previous.sort((a, b) => b.date - a.date);
   const deletes = previous

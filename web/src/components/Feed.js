@@ -9,7 +9,7 @@ import {
   withStyles
 } from "material-ui";
 import firebase from "../firebase";
-import { Star } from "material-ui-icons";
+import { Star as StarIcon, List as ListIcon } from "material-ui-icons";
 
 const months = [
   "January",
@@ -29,6 +29,8 @@ const months = [
 const styles = theme => ({
   feed: {
     height: "100%",
+    maxWidth: "400px",
+    width: "100%",
     overflowY: "auto",
     marginTop: theme.spacing.unit * 2
   }
@@ -83,7 +85,9 @@ export const Feed = withStyles(styles)(
 
       const posts = this.state.feed.filter(post => settings[post.time]);
 
-      posts.sort((a, b) => b - a);
+      posts.sort((a, b) => b.date - a.date);
+
+      const disableAll = Object.keys(times).every(time => settings[time]);
 
       return (
         <div className={classes.feed}>
@@ -91,18 +95,18 @@ export const Feed = withStyles(styles)(
             {this.props.settings && (
               <ListItem button onClick={this._toggleAll.bind(this)}>
                 <ListItemIcon>
-                  <Star />
+                  <StarIcon />
                 </ListItemIcon>
                 <ListItemText primary={`All Posts`} />
                 <ListItemSecondaryAction>
                   <Switch
                     onChange={this._toggleAll.bind(this)}
                     checked={this.state.all}
+                    disabled={disableAll}
                   />
                 </ListItemSecondaryAction>
               </ListItem>
             )}
-
             {posts.map(post => (
               <ListItem
                 key={post.id}
@@ -110,7 +114,11 @@ export const Feed = withStyles(styles)(
                 onClick={() => window.open(post.permalink, "_blank")}
               >
                 <ListItemIcon>
-                  <img alt="" src={post.thumbnail} />
+                  {post.thumbnail ? (
+                    <img alt="" src={post.thumbnail} />
+                  ) : (
+                    <ListIcon />
+                  )}
                 </ListItemIcon>
                 <ListItemText
                   primary={`${formatDate(post.date)}, ${post.time}`}

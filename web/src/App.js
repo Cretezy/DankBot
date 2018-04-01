@@ -21,7 +21,7 @@ const theme = createMuiTheme({
 
 const styles = theme => ({
   root: {
-    height: "95vh",
+    height: "100vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
