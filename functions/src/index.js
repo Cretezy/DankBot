@@ -131,10 +131,10 @@ export const time = https.onRequest(async (req, res) => {
   ;
 
   console.log(message);
-  // Keep only latest 6 (+1 from today)
-  previous.sort((a, b) => b.date - a.date);
+  // Keep only latest 9 (+1 from today)
+  previous.sort((a, b) => b.data().date - a.data().date);
   const deletes = previous
-    .splice(6)
+    .splice(9)
     .map(previousDoc => previousDoc.ref.delete());
 
   await Promise.all([
